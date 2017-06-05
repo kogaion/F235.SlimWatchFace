@@ -30,7 +30,6 @@
 <entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceApp.mc" lineNum="14" pc="268435968" symbol="onStop"/>
 <entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceApp.mc" lineNum="18" pc="268435973" symbol="getInitialView"/>
 <entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceApp.mc" lineNum="19" pc="268435977" symbol="getInitialView"/>
-<entry filename="Rez" lineNum="18" pc="268436015" symbol="WatchFace"/>
 </pcToLineNum>
 <symbolTable>
 <entry id="8389124" method="true" symbol="onUpdate"/>
@@ -43,7 +42,6 @@
 <entry id="8389123" method="true" symbol="onShow"/>
 <entry id="8388702" method="true" symbol="initialize"/>
 <entry field="true" id="13" symbol="AppName"/>
-<entry id="8389375" method="true" symbol="WatchFace"/>
 <entry field="true" id="12" symbol="LauncherIcon"/>
 <entry id="15" symbol="drawTime"/>
 <entry id="8389281" method="true" symbol="onStop"/>
@@ -115,10 +113,6 @@
 </functionEntry>
 <functionEntry name="getInitialView" parent="F235SlimWatchFaceApp">
 <documentation/>
-</functionEntry>
-<functionEntry name="WatchFace" parent="Layouts">
-<param id="dc"/>
-<documentation><![CDATA[<div class="description"> Draw the layout<br/> param The context<br/></div>]]></documentation>
 </functionEntry>
 </functions>
 </debugInfo>
