@@ -11,7 +11,6 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
 
     // Load your resources here
     function onLayout(dc) {
-        setLayout(Rez.Layouts.WatchFace(dc));
     }
 
     // Called when this View is brought to the foreground. Restore
@@ -22,14 +21,16 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
 
     // Update the view
     function onUpdate(dc) {
-        // Get and show the current time
-        var clockTime = Sys.getClockTime();
-        var timeString = Lang.format("$1$:$2$", [clockTime.hour, clockTime.min.format("%02d")]);
-        var view = View.findDrawableById("TimeLabel");
-        view.setText(timeString);
 
-        // Call the parent onUpdate function to redraw the layout
-        View.onUpdate(dc);
+
+
+        // clear background
+        dc.setColor(Gfx.COLOR_TRANSPARENT, Gfx.COLOR_WHITE);
+        dc.clear();
+        //Sys.println("bg");
+
+        me.drawLines(dc, Gfx.COLOR_BLACK);
+        me.drawTime(dc, Gfx.FONT_NUMBER_HOT, Gfx.COLOR_BLACK);
     }
 
     // Called when this View is removed from the screen. Save the
@@ -46,4 +47,33 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
     function onEnterSleep() {
     }
 
+    hidden function drawLines(dc, color) {
+        var settings = Sys.getDeviceSettings();
+        var noOfAreas = 3;
+
+        dc.setColor(color, Gfx.COLOR_TRANSPARENT);
+        for (var i = 1; i < noOfAreas; i ++) {
+            dc.drawLine(
+                0,
+                i * settings.screenHeight / noOfAreas,
+                settings.screenWidth,
+                i * settings.screenHeight / noOfAreas
+            );
+        }
+    }
+
+    hidden function drawTime(dc, font, color) {
+        var time = Sys.getClockTime();
+        var settings = Sys.getDeviceSettings();
+
+        dc.setColor(color, Gfx.COLOR_TRANSPARENT);
+        dc.drawText(
+            settings.screenWidth / 2,
+            settings.screenHeight / 2,
+            font,
+            time.hour.format("%02d") + ":" + time.min.format("%02d"),
+            Gfx.TEXT_JUSTIFY_CENTER | Gfx.TEXT_JUSTIFY_VCENTER
+        );
+
+    }
 }
