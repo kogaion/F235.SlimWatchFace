@@ -1,68 +1,158 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <debugInfo>
 <pcToLineNum>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="8" pc="268435456" symbol="initialize"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="9" pc="268435460" symbol="initialize"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="13" pc="268435479" symbol="onLayout"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="19" pc="268435484" symbol="onShow"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="23" pc="268435489" symbol="onUpdate"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="28" pc="268435493" symbol="onUpdate"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="29" pc="268435529" symbol="onUpdate"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="32" pc="268435541" symbol="onUpdate"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="33" pc="268435567" symbol="onUpdate"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="39" pc="268435606" symbol="onHide"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="43" pc="268435611" symbol="onExitSleep"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="47" pc="268435616" symbol="onEnterSleep"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="50" pc="268435621" symbol="drawLines"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="51" pc="268435625" symbol="drawLines"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="52" pc="268435642" symbol="drawLines"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="54" pc="268435649" symbol="drawLines"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="55" pc="268435675" symbol="drawLines"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="56" pc="268435690" symbol="drawLines"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="65" pc="268435757" symbol="drawTime"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="66" pc="268435761" symbol="drawTime"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="67" pc="268435778" symbol="drawTime"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="69" pc="268435795" symbol="drawTime"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="70" pc="268435821" symbol="drawTime"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceApp.mc" lineNum="5" pc="268435940" symbol="initialize"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceApp.mc" lineNum="6" pc="268435944" symbol="initialize"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceApp.mc" lineNum="10" pc="268435963" symbol="onStart"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceApp.mc" lineNum="14" pc="268435968" symbol="onStop"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceApp.mc" lineNum="18" pc="268435973" symbol="getInitialView"/>
-<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceApp.mc" lineNum="19" pc="268435977" symbol="getInitialView"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="18" pc="268435456" symbol="initialize"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="19" pc="268435460" symbol="initialize"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="23" pc="268435479" symbol="onLayout"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="24" pc="268435483" symbol="onLayout"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="25" pc="268435500" symbol="onLayout"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="26" pc="268435516" symbol="onLayout"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="32" pc="268435533" symbol="onShow"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="36" pc="268435538" symbol="onUpdate"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="38" pc="268435542" symbol="onUpdate"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="41" pc="268435555" symbol="onUpdate"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="42" pc="268435591" symbol="onUpdate"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="44" pc="268435603" symbol="onUpdate"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="45" pc="268435616" symbol="onUpdate"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="47" pc="268435740" symbol="onUpdate"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="48" pc="268435846" symbol="onUpdate"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="50" pc="268435884" symbol="onUpdate"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="51" pc="268436004" symbol="onUpdate"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="57" pc="268436130" symbol="onHide"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="61" pc="268436135" symbol="onExitSleep"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="65" pc="268436140" symbol="onEnterSleep"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="69" pc="268436145" symbol="drawLines"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="71" pc="268436149" symbol="drawLines"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="73" pc="268436166" symbol="drawLines"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="76" pc="268436173" symbol="drawLines"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="77" pc="268436205" symbol="drawLines"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="85" pc="268436276" symbol="drawLines"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="86" pc="268436308" symbol="drawLines"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="95" pc="268436398" symbol="drawTime"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="96" pc="268436402" symbol="drawTime"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="98" pc="268436419" symbol="drawTime"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="99" pc="268436451" symbol="drawTime"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="107" pc="268436546" symbol="drawTime"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="108" pc="268436578" symbol="drawTime"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="117" pc="268436674" symbol="drawDate"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="118" pc="268436678" symbol="drawDate"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="120" pc="268436726" symbol="drawDate"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="121" pc="268436752" symbol="drawDate"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="130" pc="268436888" symbol="drawSteps"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="131" pc="268436892" symbol="drawSteps"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="132" pc="268436905" symbol="drawSteps"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="133" pc="268436922" symbol="drawSteps"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="134" pc="268436932" symbol="drawSteps"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="136" pc="268436942" symbol="drawSteps"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="137" pc="268436967" symbol="drawSteps"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="140" pc="268436971" symbol="drawSteps"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="141" pc="268436984" symbol="drawSteps"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="142" pc="268437021" symbol="drawSteps"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="143" pc="268437035" symbol="drawSteps"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="146" pc="268437048" symbol="drawSteps"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="147" pc="268437070" symbol="drawSteps"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="149" pc="268437085" symbol="drawSteps"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="150" pc="268437140" symbol="drawSteps"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="151" pc="268437155" symbol="drawSteps"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="152" pc="268437162" symbol="drawSteps"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="154" pc="268437177" symbol="drawSteps"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="155" pc="268437208" symbol="drawSteps"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="159" pc="268437226" symbol="drawBattery"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="160" pc="268437230" symbol="drawBattery"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="161" pc="268437247" symbol="drawBattery"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="163" pc="268437257" symbol="drawBattery"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="164" pc="268437279" symbol="drawBattery"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="166" pc="268437294" symbol="drawBattery"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="167" pc="268437331" symbol="drawBattery"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="169" pc="268437346" symbol="drawBattery"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="170" pc="268437356" symbol="drawBattery"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="171" pc="268437369" symbol="drawBattery"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="173" pc="268437384" symbol="drawBattery"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="174" pc="268437395" symbol="drawBattery"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="176" pc="268437401" symbol="drawBattery"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="179" pc="268437421" symbol="drawBattery"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="182" pc="268437450" symbol="degree"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="183" pc="268437454" symbol="degree"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="184" pc="268437465" symbol="degree"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="186" pc="268437478" symbol="degree"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="187" pc="268437489" symbol="degree"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="189" pc="268437502" symbol="degree"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="192" pc="268437506" symbol="drawSideArc"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="193" pc="268437510" symbol="drawSideArc"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="194" pc="268437536" symbol="drawSideArc"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="195" pc="268437553" symbol="drawSideArc"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="205" pc="268437620" symbol="getLinesStatus"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="206" pc="268437624" symbol="getLinesStatus"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceView.mc" lineNum="207" pc="268437641" symbol="getLinesStatus"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceApp.mc" lineNum="5" pc="268437719" symbol="initialize"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceApp.mc" lineNum="6" pc="268437723" symbol="initialize"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceApp.mc" lineNum="10" pc="268437742" symbol="onStart"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceApp.mc" lineNum="14" pc="268437747" symbol="onStop"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceApp.mc" lineNum="18" pc="268437752" symbol="getInitialView"/>
+<entry filename="D:\\Lucian\\workspace\\F235.SlimWatchFace\\source\\F235SlimWatchFaceApp.mc" lineNum="19" pc="268437756" symbol="getInitialView"/>
 </pcToLineNum>
 <symbolTable>
+<entry id="14" symbol="noOfAreas"/>
+<entry id="8389671" symbol="screenWidth"/>
 <entry id="8389124" method="true" symbol="onUpdate"/>
+<entry id="21" symbol="drawBattery"/>
 <entry field="true" id="8388611" symbol="Toybox"/>
+<entry id="19" symbol="drawDate"/>
 <entry id="8388770" module="true" symbol="Strings"/>
 <entry id="8389280" method="true" symbol="getInitialView"/>
 <entry id="8389377" method="true" symbol="onExitSleep"/>
 <entry id="8388640" symbol="Lang"/>
 <entry id="8388769" module="true" symbol="Rez"/>
 <entry id="8389123" method="true" symbol="onShow"/>
+<entry id="24" symbol="getLinesStatus"/>
 <entry id="8388702" method="true" symbol="initialize"/>
+<entry id="22" symbol="degree"/>
 <entry field="true" id="13" symbol="AppName"/>
+<entry id="8389672" symbol="screenHeight"/>
+<entry id="8388641" symbol="Math"/>
 <entry field="true" id="12" symbol="LauncherIcon"/>
-<entry id="15" symbol="drawTime"/>
+<entry id="18" symbol="drawTime"/>
 <entry id="8389281" method="true" symbol="onStop"/>
 <entry id="8388771" module="true" symbol="Drawables"/>
 <entry id="8389122" method="true" symbol="onLayout"/>
+<entry id="16" symbol="offsetDegrees"/>
+<entry id="20" symbol="drawSteps"/>
 <entry id="8389279" method="true" symbol="onStart"/>
 <entry id="8389376" method="true" symbol="onEnterSleep"/>
-<entry id="14" symbol="drawLines"/>
+<entry id="15" symbol="offsetX"/>
+<entry id="17" symbol="drawLines"/>
 <entry id="8" object="true" symbol="F235SlimWatchFaceView"/>
 <entry id="11" module="true" symbol="Layouts"/>
 <entry id="9" object="true" symbol="F235SlimWatchFaceApp"/>
 <entry id="8389125" method="true" symbol="onHide"/>
 <entry id="10" module="true" symbol="Menus"/>
+<entry id="23" symbol="drawSideArc"/>
 <entry id="8388772" module="true" symbol="Fonts"/>
 </symbolTable>
 <localVars>
-<entry endPc="268435756" name="i" stackId="5" startPc="268435690"/>
-<entry endPc="268435756" name="noOfAreas" stackId="4" startPc="268435625"/>
-<entry endPc="268435756" name="settings" stackId="3" startPc="268435625"/>
-<entry endPc="268435939" name="settings" stackId="5" startPc="268435761"/>
-<entry endPc="268435939" name="time" stackId="4" startPc="268435761"/>
+<entry endPc="268435532" name="settings" stackId="2" startPc="268435483"/>
+<entry endPc="268436129" name="linesStatus" stackId="2" startPc="268435542"/>
+<entry endPc="268436397" name="offsetX" stackId="3" startPc="268436149"/>
+<entry endPc="268436673" name="time" stackId="4" startPc="268436402"/>
+<entry endPc="268436887" name="date" stackId="4" startPc="268436678"/>
+<entry endPc="268437212" name="endDegree" stackId="12" startPc="268437155"/>
+<entry endPc="268437225" name="i" stackId="11" startPc="268437155"/>
+<entry endPc="268437225" name="degreeStep" stackId="10" startPc="268436892"/>
+<entry endPc="268437225" name="steps" stackId="6" startPc="268436892"/>
+<entry endPc="268437225" name="goal" stackId="5" startPc="268436892"/>
+<entry endPc="268437225" name="size" stackId="3" startPc="268436892"/>
+<entry endPc="268437225" name="ratio" stackId="7" startPc="268436892"/>
+<entry endPc="268437225" name="startDegree" stackId="9" startPc="268436892"/>
+<entry endPc="268437225" name="info" stackId="4" startPc="268436892"/>
+<entry endPc="268437225" name="level" stackId="8" startPc="268436892"/>
+<entry endPc="268437421" name="i" stackId="10" startPc="268437384"/>
+<entry endPc="268437449" name="battery" stackId="5" startPc="268437230"/>
+<entry endPc="268437449" name="color" stackId="8" startPc="268437230"/>
+<entry endPc="268437449" name="endDegree" stackId="7" startPc="268437230"/>
+<entry endPc="268437449" name="size" stackId="9" startPc="268437230"/>
+<entry endPc="268437449" name="stats" stackId="4" startPc="268437230"/>
+<entry endPc="268437449" name="startDegree" stackId="6" startPc="268437230"/>
+<entry endPc="268437718" name="settings" stackId="1" startPc="268437624"/>
 </localVars>
 <annotations/>
 <functions>
@@ -91,13 +181,45 @@
 </functionEntry>
 <functionEntry name="drawLines" parent="F235SlimWatchFaceView">
 <param id="dc"/>
-<param id="color"/>
+<param id="colors"/>
 <documentation/>
 </functionEntry>
 <functionEntry name="drawTime" parent="F235SlimWatchFaceView">
 <param id="dc"/>
+<param id="fonts"/>
+<param id="colors"/>
+<documentation/>
+</functionEntry>
+<functionEntry name="drawDate" parent="F235SlimWatchFaceView">
+<param id="dc"/>
 <param id="font"/>
 <param id="color"/>
+<documentation/>
+</functionEntry>
+<functionEntry name="drawSteps" parent="F235SlimWatchFaceView">
+<param id="dc"/>
+<param id="colors"/>
+<documentation/>
+</functionEntry>
+<functionEntry name="drawBattery" parent="F235SlimWatchFaceView">
+<param id="dc"/>
+<param id="thresholds"/>
+<param id="colors"/>
+<documentation/>
+</functionEntry>
+<functionEntry name="degree" parent="F235SlimWatchFaceView">
+<param id="d"/>
+<documentation/>
+</functionEntry>
+<functionEntry name="drawSideArc" parent="F235SlimWatchFaceView">
+<param id="dc"/>
+<param id="color"/>
+<param id="direction"/>
+<param id="startDegree"/>
+<param id="endDegree"/>
+<documentation/>
+</functionEntry>
+<functionEntry name="getLinesStatus" parent="F235SlimWatchFaceView">
 <documentation/>
 </functionEntry>
 <functionEntry name="initialize" parent="F235SlimWatchFaceApp">
