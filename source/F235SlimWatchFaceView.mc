@@ -11,6 +11,7 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
     hidden var screenWidth;
     hidden var screenHeight;
     hidden var noOfAreas;
+    hidden var bgColor;
 
     //hidden var offsetX = 47; // experimental; semi-round watch, distance from left edge to the visible top left corner
     hidden var offsetD = 35; // experimental; semi-round watch, how many degrees are not available on the left and right screen edges
@@ -23,6 +24,7 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
         me.screenHeight = settings.screenHeight;
 
         me.noOfAreas = 5;
+        me.bgColor = Gfx.COLOR_BLACK;
     }
 
     // Load your resources here
@@ -38,8 +40,10 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
     // Update the view
     function onUpdate(dc) {
 
+
+
         // clear background
-        dc.setColor(Gfx.COLOR_TRANSPARENT, Gfx.COLOR_BLACK/*me.colors["background"]*/);
+        dc.setColor(Gfx.COLOR_TRANSPARENT, bgColor);
         dc.clear();
 
         me.drawNotifications(dc);
@@ -165,8 +169,6 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
         var levelDegree = startDegree + ratio * (180 - 2 * me.offsetD) / 100;
         levelDegree = me.degree(levelDegree);
 
-        //Sys.println(startDegree + "," + levelDegree + ": " + ratio + "(" + steps + "," + goal + ")");
-
         me.drawArcLevel(dc, ratio, thresholds, colors, dc.ARC_COUNTER_CLOCKWISE, startDegree, endDegree, levelDegree, true);
     }
 
@@ -175,8 +177,8 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
         var stats = Sys.getSystemStats();
         var battery = stats.battery;
 
-        var thresholds = [0, 10, 90];
-        var colors = [Gfx.COLOR_RED, Gfx.COLOR_BLUE, Gfx.COLOR_GREEN];
+        var thresholds = [0, 10];
+        var colors = [Gfx.COLOR_RED, Gfx.COLOR_DK_GRAY];
 
         var startDegree = 270 - me.offsetD;
         startDegree = me.degree(startDegree);
@@ -195,12 +197,18 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
         var color = colors[0];
         var size = thresholds.size();
 
+        var sign = (direction == dc.ARC_CLOCKWISE ? -1 : 1);
+
         // background arc
-        me.drawSideArc(dc, Gfx.COLOR_DK_GRAY, direction, startDegree, endDegree);
+        me.drawSideArc(dc, Gfx.COLOR_DK_GRAY, direction, startDegree, endDegree, me.screenWidth / 2 - 4, 8);
+        me.drawSideArc(dc, bgColor, direction, startDegree + 1 * sign, endDegree - 1 * sign, me.screenWidth / 2 - 4, 6);
 
         if (startDegree == levelDegree) {
             return;
         }
+
+        var radius = me.screenWidth / 2 - 4;
+        var penWidth = 8;
 
         // get the color of the level and draw the level arc
         for (var i = 0; i < size; i ++) {
@@ -209,7 +217,7 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
             }
             color = colors[i];
         }
-        me.drawSideArc(dc, color, direction, startDegree, levelDegree);
+        me.drawSideArc(dc, color, direction, startDegree, levelDegree, radius, penWidth);
 
         // draw all colors?
         if (drawAllColors) {
@@ -225,12 +233,12 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
                     break;
                 }
 
-                degreeStep = (direction == dc.ARC_CLOCKWISE ? -1 : 1) * Math.floor(((180 - 2 * me.offsetD) * (thresholds[i + 1] - thresholds[i])) / 100);
+                degreeStep = sign * Math.floor(((180 - 2 * me.offsetD) * (thresholds[i + 1] - thresholds[i])) / 100);
 
                 stepEndDegree = stepStartDegree + degreeStep;
                 stepEndDegree = me.degree(stepEndDegree);
 
-                me.drawSideArc(dc, colors[i], direction, stepStartDegree, stepEndDegree);
+                me.drawSideArc(dc, colors[i], direction, stepStartDegree, stepEndDegree, radius, penWidth);
 
                 stepStartDegree = stepEndDegree;
             }
@@ -247,13 +255,13 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
         return d;
     }
 
-    hidden function drawSideArc(dc, color, direction, startDegree, endDegree) {
+    hidden function drawSideArc(dc, color, direction, startDegree, endDegree, radius, penWidth) {
         dc.setColor(color, Gfx.COLOR_TRANSPARENT);
-        dc.setPenWidth(8);
+        dc.setPenWidth(penWidth);
         dc.drawArc(
             me.screenWidth / 2,
             me.screenHeight / 2,
-            me.screenWidth / 2 - 2,
+            radius,
             direction,
             startDegree,
             endDegree
