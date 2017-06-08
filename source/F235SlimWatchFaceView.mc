@@ -11,9 +11,9 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
     hidden var screenWidth;
     hidden var screenHeight;
     hidden var noOfAreas;
-    hidden var colors;
+    /*hidden var colors;
     hidden var fonts;
-    hidden var thresholds;
+    hidden var thresholds;*/
     //hidden var offsetX = 47; // experimental; semi-round watch, distance from left edge to the visible top left corner
     hidden var offsetD = 35; // experimental; semi-round watch, how many degrees are not available on the left and right screen edges
 
@@ -33,7 +33,7 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
 
         me.noOfAreas = 5;
 
-        me.colors = {
+        /*me.colors = {
             "background"    => Gfx.COLOR_BLACK,
             "notifications" => Gfx.COLOR_RED,
             "connected"     => Gfx.COLOR_GREEN,
@@ -50,7 +50,7 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
 
         me.thresholds = {
             "battery"       => [0, 10, 90]
-        };
+        };*/
     }
 
     // Load your resources here
@@ -80,15 +80,15 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
         me.notifications = settings.notificationCount;
 
         // clear background
-        dc.setColor(Gfx.COLOR_TRANSPARENT, me.colors["background"]);
+        dc.setColor(Gfx.COLOR_TRANSPARENT, Gfx.COLOR_BLACK/*me.colors["background"]*/);
         dc.clear();
 
-        me.drawNotifications(dc, me.colors["notifications"]);
-        me.drawConnected(dc, me.colors["connected"]);
-        me.drawTime(dc, me.fonts["time"], me.colors["time"]);
-        me.drawDate(dc, me.fonts["date"], me.colors["date"]);
-        me.drawSteps(dc, me.colors["steps"]);
-        me.drawBattery(dc, me.thresholds["battery"], me.colors["battery"]);
+        me.drawNotifications(dc/*, me.colors["notifications"]*/);
+        me.drawConnected(dc/*, me.colors["connected"]*/);
+        me.drawTime(dc/*, me.fonts["time"], me.colors["time"]*/);
+        me.drawDate(dc/*, me.fonts["date"], me.colors["date"]*/);
+        me.drawSteps(dc/*, me.colors["steps"]*/);
+        me.drawBattery(dc/*, me.thresholds["battery"], me.colors["battery"]*/);
     }
 
     // Called when this View is removed from the screen. Save the
@@ -105,7 +105,8 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
     function onEnterSleep() {
     }
 
-    hidden function drawNotifications(dc, color) {
+    hidden function drawNotifications(dc/*, color*/) {
+
         if (me.notifications <= 0) {
             return;
         }
@@ -113,7 +114,7 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
         var offsetX = 50;
 
         dc.setPenWidth(2);
-        dc.setColor(color, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(Gfx.COLOR_RED/*color*/, Gfx.COLOR_TRANSPARENT);
         dc.drawLine(
             offsetX,
             1 * me.screenHeight / me.noOfAreas,
@@ -122,7 +123,8 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
         );
     }
 
-    hidden function drawConnected(dc, color) {
+    hidden function drawConnected(dc/*, color*/) {
+
         if (me.connected <= 0) {
             return;
         }
@@ -130,7 +132,7 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
         var offsetX = 50;
 
         dc.setPenWidth(2);
-        dc.setColor(color, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(Gfx.COLOR_GREEN/*color*/, Gfx.COLOR_TRANSPARENT);
         dc.drawLine(
             offsetX,
             (me.noOfAreas - 1) * me.screenHeight / me.noOfAreas,
@@ -140,40 +142,40 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
     }
 
     // draw the clock time (hh mm)
-    hidden function drawTime(dc, fonts, colors) {
+    hidden function drawTime(dc/*, fonts, colors*/) {
 
-        dc.setColor(colors["hour"], Gfx.COLOR_TRANSPARENT);
+        dc.setColor(Gfx.COLOR_WHITE/*colors["hour"]*/, Gfx.COLOR_TRANSPARENT);
         dc.drawText(
             me.screenWidth / 2,
             me.screenHeight / 2,
-            fonts["hour"],
+            Gfx.FONT_SYSTEM_NUMBER_THAI_HOT/*fonts["hour"]*/,
             me.time.hour.format("%02d"),
             Gfx.TEXT_JUSTIFY_RIGHT | Gfx.TEXT_JUSTIFY_VCENTER
         );
 
-        dc.setColor(colors["min"], Gfx.COLOR_TRANSPARENT);
+        dc.setColor(Gfx.COLOR_LT_GRAY/*colors["min"]*/, Gfx.COLOR_TRANSPARENT);
         dc.drawText(
             me.screenWidth / 2,
             me.screenHeight / 2,
-            fonts["min"],
-            time.min.format("%02d"),
+            Gfx.FONT_SYSTEM_NUMBER_THAI_HOT/*fonts["min"]*/,
+            me.time.min.format("%02d"),
             Gfx.TEXT_JUSTIFY_LEFT | Gfx.TEXT_JUSTIFY_VCENTER
         );
     }
 
-    hidden function drawDate(dc, font, color) {
+    hidden function drawDate(dc/*, font, color*/) {
 
-        dc.setColor(color, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(Gfx.COLOR_WHITE/*color*/, Gfx.COLOR_TRANSPARENT);
         dc.drawText(
             me.screenWidth / 2,
             (me.noOfAreas * 2 - 1) * me.screenHeight / (me.noOfAreas * 2),
-            font,
+            Gfx.FONT_SMALL/*font*/,
             me.date.day_of_week + ", " + me.date.month + " " + me.date.day,
             Gfx.TEXT_JUSTIFY_CENTER | Gfx.TEXT_JUSTIFY_VCENTER
         );
     }
 
-    hidden function drawSteps(dc, colors) {
+    hidden function drawSteps(dc/*, colors*/) {
 
         var steps = me.steps.steps;
         var goal = me.steps.stepGoal;
@@ -181,6 +183,9 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
         if (steps == 0 || goal == 0) {
             return ;
         }
+
+        var colors = [Gfx.COLOR_DK_GRAY, Gfx.COLOR_RED, Gfx.COLOR_ORANGE, Gfx.COLOR_BLUE, Gfx.COLOR_GREEN];
+        var size = colors.size();
 
         var ratio = 100.0 * steps / goal;
         var level = (Math.floor(ratio * size / 100)).toLong();
@@ -201,7 +206,10 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
         }
     }
 
-    hidden function drawBattery(dc, thresholds, colors) {
+    hidden function drawBattery(dc/*, thresholds, colors*/) {
+
+        var thresholds = [0, 10, 90];
+        var colors = [Gfx.COLOR_RED, Gfx.COLOR_BLUE, Gfx.COLOR_GREEN];
 
         var startDegree = 270 - me.offsetD;
         startDegree = me.degree(startDegree);
