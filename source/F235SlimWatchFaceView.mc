@@ -11,18 +11,9 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
     hidden var screenWidth;
     hidden var screenHeight;
     hidden var noOfAreas;
-    /*hidden var colors;
-    hidden var fonts;
-    hidden var thresholds;*/
+
     //hidden var offsetX = 47; // experimental; semi-round watch, distance from left edge to the visible top left corner
     hidden var offsetD = 35; // experimental; semi-round watch, how many degrees are not available on the left and right screen edges
-
-    hidden var notifications;
-    hidden var connected;
-    hidden var battery;
-    hidden var steps;
-    hidden var time;
-    hidden var date;
 
     function initialize() {
         WatchFace.initialize();
@@ -32,30 +23,10 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
         me.screenHeight = settings.screenHeight;
 
         me.noOfAreas = 5;
-
-        /*me.colors = {
-            "background"    => Gfx.COLOR_BLACK,
-            "notifications" => Gfx.COLOR_RED,
-            "connected"     => Gfx.COLOR_GREEN,
-            "time"          => {"hour" => Gfx.COLOR_WHITE, "min" => Gfx.COLOR_LT_GRAY},
-            "date"          => Gfx.COLOR_WHITE,
-            "steps"         => [Gfx.COLOR_DK_GRAY, Gfx.COLOR_RED, Gfx.COLOR_ORANGE, Gfx.COLOR_BLUE, Gfx.COLOR_GREEN],
-            "battery"       => [Gfx.COLOR_RED, Gfx.COLOR_BLUE, Gfx.COLOR_GREEN]
-        };
-
-        me.fonts = {
-            "time"          => {"hour" => Gfx.FONT_SYSTEM_NUMBER_THAI_HOT, "min" => Gfx.FONT_SYSTEM_NUMBER_THAI_HOT},
-            "date"          => Gfx.FONT_SMALL
-        };
-
-        me.thresholds = {
-            "battery"       => [0, 10, 90]
-        };*/
     }
 
     // Load your resources here
     function onLayout(dc) {
-
     }
 
     // Called when this View is brought to the foreground. Restore
@@ -67,28 +38,16 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
     // Update the view
     function onUpdate(dc) {
 
-        // get the current data
-        var stats = Sys.getSystemStats();
-        var settings = Sys.getDeviceSettings();
-
-        // init the current values
-        me.battery = stats.battery;
-        me.time = Sys.getClockTime();
-        me.date = Greg.info(Time.now(), Time.FORMAT_MEDIUM);
-        me.steps = Act.getInfo();
-        me.connected = settings.phoneConnected ? 1 : 0;
-        me.notifications = settings.notificationCount;
-
         // clear background
         dc.setColor(Gfx.COLOR_TRANSPARENT, Gfx.COLOR_BLACK/*me.colors["background"]*/);
         dc.clear();
 
-        me.drawNotifications(dc/*, me.colors["notifications"]*/);
-        me.drawConnected(dc/*, me.colors["connected"]*/);
-        me.drawTime(dc/*, me.fonts["time"], me.colors["time"]*/);
-        me.drawDate(dc/*, me.fonts["date"], me.colors["date"]*/);
-        me.drawSteps(dc/*, me.colors["steps"]*/);
-        me.drawBattery(dc/*, me.thresholds["battery"], me.colors["battery"]*/);
+        me.drawNotifications(dc);
+        me.drawConnected(dc);
+        me.drawTime(dc);
+        me.drawDate(dc);
+        me.drawSteps(dc);
+        me.drawBattery(dc);
     }
 
     // Called when this View is removed from the screen. Save the
@@ -105,16 +64,18 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
     function onEnterSleep() {
     }
 
-    hidden function drawNotifications(dc/*, color*/) {
+    hidden function drawNotifications(dc) {
 
-        if (me.notifications <= 0) {
+        var settings = Sys.getDeviceSettings();
+        var notifications = settings.notificationCount;
+        if (notifications <= 0) {
             return;
         }
 
         var offsetX = 50;
 
         dc.setPenWidth(2);
-        dc.setColor(Gfx.COLOR_RED/*color*/, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_TRANSPARENT);
         dc.drawLine(
             offsetX,
             1 * me.screenHeight / me.noOfAreas,
@@ -123,16 +84,18 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
         );
     }
 
-    hidden function drawConnected(dc/*, color*/) {
+    hidden function drawConnected(dc) {
 
-        if (me.connected <= 0) {
+        var settings = Sys.getDeviceSettings();
+        var connected = settings.phoneConnected ? 1 : 0;
+        if (connected <= 0) {
             return;
         }
 
         var offsetX = 50;
 
         dc.setPenWidth(2);
-        dc.setColor(Gfx.COLOR_GREEN/*color*/, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_TRANSPARENT);
         dc.drawLine(
             offsetX,
             (me.noOfAreas - 1) * me.screenHeight / me.noOfAreas,
@@ -141,72 +104,76 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
         );
     }
 
-    // draw the clock time (hh mm)
-    hidden function drawTime(dc/*, fonts, colors*/) {
+    hidden function drawTime(dc) {
 
-        dc.setColor(Gfx.COLOR_WHITE/*colors["hour"]*/, Gfx.COLOR_TRANSPARENT);
+        var time = Sys.getClockTime();
+
+        dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
         dc.drawText(
             me.screenWidth / 2,
             me.screenHeight / 2,
-            Gfx.FONT_SYSTEM_NUMBER_THAI_HOT/*fonts["hour"]*/,
-            me.time.hour.format("%02d"),
+            Gfx.FONT_SYSTEM_NUMBER_THAI_HOT,
+            time.hour.format("%02d"),
             Gfx.TEXT_JUSTIFY_RIGHT | Gfx.TEXT_JUSTIFY_VCENTER
         );
 
-        dc.setColor(Gfx.COLOR_LT_GRAY/*colors["min"]*/, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(Gfx.COLOR_LT_GRAY, Gfx.COLOR_TRANSPARENT);
         dc.drawText(
             me.screenWidth / 2,
             me.screenHeight / 2,
-            Gfx.FONT_SYSTEM_NUMBER_THAI_HOT/*fonts["min"]*/,
-            me.time.min.format("%02d"),
+            Gfx.FONT_SYSTEM_NUMBER_THAI_HOT,
+            time.min.format("%02d"),
             Gfx.TEXT_JUSTIFY_LEFT | Gfx.TEXT_JUSTIFY_VCENTER
         );
     }
 
-    hidden function drawDate(dc/*, font, color*/) {
+    hidden function drawDate(dc) {
 
-        dc.setColor(Gfx.COLOR_WHITE/*color*/, Gfx.COLOR_TRANSPARENT);
+        var date = Greg.info(Time.now(), Time.FORMAT_MEDIUM);
+
+        dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
         dc.drawText(
             me.screenWidth / 2,
             (me.noOfAreas * 2 - 1) * me.screenHeight / (me.noOfAreas * 2),
-            Gfx.FONT_SMALL/*font*/,
-            me.date.day_of_week + ", " + me.date.month + " " + me.date.day,
+            Gfx.FONT_SMALL,
+            date.day_of_week + ", " + date.month + " " + date.day,
             Gfx.TEXT_JUSTIFY_CENTER | Gfx.TEXT_JUSTIFY_VCENTER
         );
     }
 
-    hidden function drawSteps(dc/*, colors*/) {
+    hidden function drawSteps(dc) {
 
-        var steps = me.steps.steps;
-        var goal = me.steps.stepGoal;
+        var info = Act.getInfo();
+        var steps = info.steps;
+        var goal = info.stepGoal;
 
-        if (steps == 0 || goal == 0) {
-            return ;
+        if (steps > goal) {
+            steps = goal;
         }
 
-        var colors = [Gfx.COLOR_DK_GRAY, Gfx.COLOR_RED, Gfx.COLOR_ORANGE, Gfx.COLOR_BLUE, Gfx.COLOR_GREEN];
-        var size = colors.size();
+        var ratio = (steps == 0 || goal == 0) ? 0 : (100 * steps / goal);
 
-        var ratio = 100.0 * steps / goal;
-        var level = (Math.floor(ratio * size / 100)).toLong();
-        if (level > size - 1) {
-            level = size - 1;
-        }
+        var colors = [Gfx.COLOR_WHITE, Gfx.COLOR_RED, Gfx.COLOR_ORANGE, Gfx.COLOR_BLUE, Gfx.COLOR_GREEN];
+        var thresholds = [0, 20, 40, 60, 80];
 
         var startDegree = 270 + me.offsetD;
         startDegree = me.degree(startDegree);
 
-        var degreeStep = Math.floor((180 - 2 * me.offsetD) / size);
-        for (var i = 0; i <= level; i ++) {
-            var endDegree = startDegree + degreeStep;
-            endDegree = me.degree(endDegree);
+        var endDegree = 90 - me.offsetD;
+        endDegree = me.degree(endDegree);
 
-            me.drawSideArc(dc, colors[i], dc.ARC_COUNTER_CLOCKWISE, startDegree, endDegree);
-            startDegree = endDegree;
-        }
+        var levelDegree = startDegree + ratio * (180 - 2 * me.offsetD) / 100;
+        levelDegree = me.degree(levelDegree);
+
+        //Sys.println(startDegree + "," + levelDegree + ": " + ratio + "(" + steps + "," + goal + ")");
+
+        me.drawArcLevel(dc, ratio, thresholds, colors, dc.ARC_COUNTER_CLOCKWISE, startDegree, endDegree, levelDegree, true);
     }
 
-    hidden function drawBattery(dc/*, thresholds, colors*/) {
+    hidden function drawBattery(dc) {
+
+        var stats = Sys.getSystemStats();
+        var battery = stats.battery;
 
         var thresholds = [0, 10, 90];
         var colors = [Gfx.COLOR_RED, Gfx.COLOR_BLUE, Gfx.COLOR_GREEN];
@@ -214,20 +181,60 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
         var startDegree = 270 - me.offsetD;
         startDegree = me.degree(startDegree);
 
-        var endDegree = startDegree - (me.battery / 100) * (startDegree - (90 + me.offsetD));
+        var endDegree = 90 + me.offsetD;
         endDegree = me.degree(endDegree);
+
+        var levelDegree = startDegree - (battery / 100) * (startDegree - endDegree);
+        levelDegree = me.degree(levelDegree);
+
+        me.drawArcLevel(dc, battery, thresholds, colors, dc.ARC_CLOCKWISE, startDegree, endDegree, levelDegree, true);
+    }
+
+    hidden function drawArcLevel(dc, level, thresholds, colors, direction, startDegree, endDegree, levelDegree, drawAllColors) {
 
         var color = colors[0];
         var size = thresholds.size();
-        for (var i = 0; i < size; i ++) {
 
-            if (me.battery < thresholds[i]) {
+        // background arc
+        me.drawSideArc(dc, Gfx.COLOR_DK_GRAY, direction, startDegree, endDegree);
+
+        if (startDegree == levelDegree) {
+            return;
+        }
+
+        // get the color of the level and draw the level arc
+        for (var i = 0; i < size; i ++) {
+            if (level < thresholds[i]) {
                 break;
             }
             color = colors[i];
         }
+        me.drawSideArc(dc, color, direction, startDegree, levelDegree);
 
-        me.drawSideArc(dc, color, dc.ARC_CLOCKWISE, startDegree, endDegree);
+        // draw all colors?
+        if (drawAllColors) {
+
+            var degreeStep;
+            var stepStartDegree = startDegree;
+            stepStartDegree = me.degree(stepStartDegree);
+            var stepEndDegree;
+
+            for (var i = 0; i < size - 1; i ++) {
+
+                if (level < thresholds[i + 1]) {
+                    break;
+                }
+
+                degreeStep = (direction == dc.ARC_CLOCKWISE ? -1 : 1) * Math.floor(((180 - 2 * me.offsetD) * (thresholds[i + 1] - thresholds[i])) / 100);
+
+                stepEndDegree = stepStartDegree + degreeStep;
+                stepEndDegree = me.degree(stepEndDegree);
+
+                me.drawSideArc(dc, colors[i], direction, stepStartDegree, stepEndDegree);
+
+                stepStartDegree = stepEndDegree;
+            }
+        }
     }
 
     hidden function degree(d) {
