@@ -1,3 +1,24 @@
 <strings>
     <string id="AppName">F235.SlimWatchFace</string>
+    
+    <string id="ColorBlack">Black</string>
+    <string id="ColorWhite">White</string>
+    <string id="ColorRed">Red</string>
+    <string id="ColorDarkRed">DarkRed</string>
+    <string id="ColorGreen">Green</string>
+    <string id="ColorDarkGreen">DarkGreen</string>
+    <string id="ColorBlue">Blue</string>
+    <string id="ColorDarkBlue">DarkBlue</string>
+    <string id="ColorOrange">Orange</string>
+    <string id="ColorYellow">Yellow</string>
+    <string id="ColorPurple">Purple</string>
+    <string id="ColorPink">Pink</string>
+    <string id="ColorLightGray">LightGray</string>
+    <string id="ColorDarkGray">DarkGray</string>
+    
+    <string id="BackgroundColor">BackgroundColor</string>
+    <string id="HoursColor">HoursColor</string>
+    <string id="MinutesColor">MinutesColor</string>
+    <string id="DateColor">DateColor</string>
+    
 </strings>

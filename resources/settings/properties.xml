@@ -1,0 +1,31 @@
+<properties>
+    <property id="BackgroundColor" type="number">0x000000</property>
+    <property id="NotificationsColor" type="number">0xFF0000</property>
+    <property id="ConnectedColor" type="number">0x00FF00</property>
+    <property id="HoursColor" type="number">0xFFFFFF</property>
+    <property id="MinutesColor" type="number">0xAAAAAA</property>
+    <property id="DateColor" type="number">0xFFFFFF</property>
+    <property id="BatteryColor" type="number">0x555555</property>
+    <property id="BatteryWarningColor" type="number">0xFF0000</property>
+    <property id="Steps1Color" type="number">0xFFFFFF</property>
+    <property id="Steps2Color" type="number">0xFF0000</property>
+    <property id="Steps3Color" type="number">0xFF5500</property>
+    <property id="Steps4Color" type="number">0x00AAFF</property>
+    <property id="Steps5Color" type="number">0x00FF00</property>
+    <property id="ArcBorderColor" type="number">0x555555</property>
+    
+    <property id="ColorBlack" type="number">0x000000</property>
+    <property id="ColorWhite" type="number">0xFFFFFF</property>
+    <property id="ColorRed" type="number">0xFF0000</property>
+    <property id="ColorDarkRed" type="number">0xAA0000</property>
+    <property id="ColorGreen" type="number">0x00FF00</property>
+    <property id="ColorDarkGreen" type="number">0x00AA00</property>
+    <property id="ColorBlue" type="number">0x00AAFF</property>
+    <property id="ColorDarkBlue" type="number">0x0000FF</property>
+    <property id="ColorOrange" type="number">0xFF5500</property>
+    <property id="ColorYellow" type="number">0xFFAA00</property>
+    <property id="ColorPurple" type="number">0xAA00FF</property>
+    <property id="ColorPink" type="number">0xFF00FF</property>
+    <property id="ColorLightGray" type="number">0xAAAAAA</property>
+    <property id="ColorDarkGray" type="number">0x555555</property>
+</properties>

@@ -5,6 +5,7 @@ using Toybox.Lang as Lang;
 using Toybox.Time.Gregorian as Greg;
 using Toybox.ActivityMonitor as Act;
 using Toybox.Math as Math;
+using Toybox.Application as App;
 
 class F235SlimWatchFaceView extends Ui.WatchFace {
 
@@ -24,7 +25,7 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
         me.screenHeight = settings.screenHeight;
 
         me.noOfAreas = 5;
-        me.bgColor = Gfx.COLOR_BLACK;
+        me.bgColor = App.getApp().getProperty("BackgroundColor");
     }
 
     // Load your resources here
@@ -39,8 +40,6 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
 
     // Update the view
     function onUpdate(dc) {
-
-
 
         // clear background
         dc.setColor(Gfx.COLOR_TRANSPARENT, bgColor);
@@ -79,7 +78,7 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
         var offsetX = 50;
 
         dc.setPenWidth(2);
-        dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(App.getApp().getProperty("NotificationsColor"), Gfx.COLOR_TRANSPARENT);
         dc.drawLine(
             offsetX,
             1 * me.screenHeight / me.noOfAreas,
@@ -99,7 +98,7 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
         var offsetX = 50;
 
         dc.setPenWidth(2);
-        dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(App.getApp().getProperty("ConnectedColor"), Gfx.COLOR_TRANSPARENT);
         dc.drawLine(
             offsetX,
             (me.noOfAreas - 1) * me.screenHeight / me.noOfAreas,
@@ -112,7 +111,7 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
 
         var time = Sys.getClockTime();
 
-        dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(App.getApp().getProperty("HoursColor"), Gfx.COLOR_TRANSPARENT);
         dc.drawText(
             me.screenWidth / 2,
             me.screenHeight / 2,
@@ -121,7 +120,7 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
             Gfx.TEXT_JUSTIFY_RIGHT | Gfx.TEXT_JUSTIFY_VCENTER
         );
 
-        dc.setColor(Gfx.COLOR_LT_GRAY, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(App.getApp().getProperty("MinutesColor"), Gfx.COLOR_TRANSPARENT);
         dc.drawText(
             me.screenWidth / 2,
             me.screenHeight / 2,
@@ -135,7 +134,7 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
 
         var date = Greg.info(Time.now(), Time.FORMAT_MEDIUM);
 
-        dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(App.getApp().getProperty("DateColor"), Gfx.COLOR_TRANSPARENT);
         dc.drawText(
             me.screenWidth / 2,
             (me.noOfAreas * 2 - 1) * me.screenHeight / (me.noOfAreas * 2),
@@ -157,7 +156,7 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
 
         var ratio = (steps == 0 || goal == 0) ? 0 : (100 * steps / goal);
 
-        var colors = [Gfx.COLOR_WHITE, Gfx.COLOR_RED, Gfx.COLOR_ORANGE, Gfx.COLOR_BLUE, Gfx.COLOR_GREEN];
+        var colors = [App.getApp().getProperty("Steps1Color"), App.getApp().getProperty("Steps2Color"), App.getApp().getProperty("Steps3Color"), App.getApp().getProperty("Steps4Color"), App.getApp().getProperty("Steps5Color")];
         var thresholds = [0, 20, 40, 60, 80];
 
         var startDegree = 270 + me.offsetD;
@@ -178,7 +177,7 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
         var battery = stats.battery;
 
         var thresholds = [0, 10];
-        var colors = [Gfx.COLOR_RED, Gfx.COLOR_DK_GRAY];
+        var colors = [App.getApp().getProperty("BatteryWarningColor"), App.getApp().getProperty("BatteryColor")];
 
         var startDegree = 270 - me.offsetD;
         startDegree = me.degree(startDegree);
@@ -200,7 +199,7 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
         var sign = (direction == dc.ARC_CLOCKWISE ? -1 : 1);
 
         // background arc
-        me.drawSideArc(dc, Gfx.COLOR_DK_GRAY, direction, startDegree, endDegree, me.screenWidth / 2 - 4, 8);
+        me.drawSideArc(dc, App.getApp().getProperty("ArcBorderColor"), direction, startDegree, endDegree, me.screenWidth / 2 - 4, 8);
         me.drawSideArc(dc, bgColor, direction, startDegree + 1 * sign, endDegree - 1 * sign, me.screenWidth / 2 - 4, 6);
 
         if (startDegree == levelDegree) {
