@@ -25,7 +25,6 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
         me.screenHeight = settings.screenHeight;
 
         me.noOfAreas = 5;
-        me.bgColor = App.getApp().getProperty("BackgroundColor");
     }
 
     // Load your resources here
@@ -42,6 +41,7 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
     function onUpdate(dc) {
 
         // clear background
+        me.bgColor = App.getApp().getProperty("BackgroundColor");
         dc.setColor(Gfx.COLOR_TRANSPARENT, bgColor);
         dc.clear();
 
@@ -154,94 +154,81 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
             steps = goal;
         }
 
-        var ratio = (steps == 0 || goal == 0) ? 0 : (100 * steps / goal);
+        var level = (steps == 0 || goal == 0) ? 0 : (100 * steps / goal);
 
         var colors = [App.getApp().getProperty("Steps1Color"), App.getApp().getProperty("Steps2Color"), App.getApp().getProperty("Steps3Color"), App.getApp().getProperty("Steps4Color"), App.getApp().getProperty("Steps5Color")];
         var thresholds = [0, 20, 40, 60, 80];
+        var size = thresholds.size();
 
         var startDegree = 270 + me.offsetD;
-        startDegree = me.degree(startDegree);
-
         var endDegree = 90 - me.offsetD;
-        endDegree = me.degree(endDegree);
 
-        var levelDegree = startDegree + ratio * (180 - 2 * me.offsetD) / 100;
-        levelDegree = me.degree(levelDegree);
+        var direction = dc.ARC_COUNTER_CLOCKWISE;
 
-        me.drawArcLevel(dc, ratio, thresholds, colors, dc.ARC_COUNTER_CLOCKWISE, startDegree, endDegree, levelDegree, true);
+        var chunkStartDegree = startDegree;
+        var chunkEndDegree = startDegree;
+
+        for (var i = 0; i < size; i ++) {
+
+            if (i < size - 1) {
+                chunkEndDegree = chunkStartDegree + Math.floor(((180 - 2 * me.offsetD) * (thresholds[i + 1] - thresholds[i])) / 100);
+                if (level >= thresholds[i + 1]) {
+                    me.drawArcFull(dc, colors[i], 8, chunkStartDegree, chunkEndDegree, direction);
+                } else {
+                    me.drawArcBorder(dc, colors[i], 8, chunkStartDegree, chunkEndDegree, direction);
+
+                    if (level > thresholds[i]) {
+                        var levelDegree = chunkStartDegree + Math.floor(((180 - 2 * me.offsetD) * (level - thresholds[i])) / 100);
+                        me.drawArcFull(dc, colors[i], 8, chunkStartDegree, levelDegree, direction);
+                    }
+                }
+            } else {
+                me.drawArcBorder(dc, colors[i], 8, chunkStartDegree, endDegree, direction);
+
+                if (level > thresholds[i]) {
+                    var levelDegree = chunkStartDegree + Math.floor(((180 - 2 * me.offsetD) * (level - thresholds[i])) / 100);
+                    me.drawArcFull(dc, colors[i], 8, chunkStartDegree, levelDegree, direction);
+                }
+            }
+
+            chunkStartDegree = chunkEndDegree;
+        }
     }
 
     hidden function drawBattery(dc) {
 
         var stats = Sys.getSystemStats();
         var battery = stats.battery;
+        var batteryColor = App.getApp().getProperty("BatteryColor");
 
-        var thresholds = [0, 10];
-        var colors = [App.getApp().getProperty("BatteryWarningColor"), App.getApp().getProperty("BatteryColor")];
+        var warningThreshold = 10;
+        var warningColor = App.getApp().getProperty("BatteryWarningColor");
 
         var startDegree = 270 - me.offsetD;
-        startDegree = me.degree(startDegree);
-
         var endDegree = 90 + me.offsetD;
-        endDegree = me.degree(endDegree);
+        var warningDegree = startDegree - Math.floor(warningThreshold * (startDegree - endDegree) / 100);
+        var batteryDegree = startDegree - Math.floor(battery * (startDegree - endDegree) / 100);
 
-        var levelDegree = startDegree - (battery / 100) * (startDegree - endDegree);
-        levelDegree = me.degree(levelDegree);
+        var direction = dc.ARC_CLOCKWISE;
 
-        me.drawArcLevel(dc, battery, thresholds, colors, dc.ARC_CLOCKWISE, startDegree, endDegree, levelDegree, true);
+        if (battery < warningThreshold) {
+            me.drawArcBorder(dc, batteryColor, 8, warningDegree, endDegree, direction);
+            me.drawArcBorder(dc, warningColor, 8, startDegree, warningDegree, direction);
+            me.drawArcFull(dc, warningColor, 8, startDegree, batteryDegree, direction);
+        } else {
+            me.drawArcBorder(dc, batteryColor, 8, batteryDegree, endDegree, direction);
+            me.drawArcFull(dc, warningColor, 8, startDegree, warningDegree, direction);
+            me.drawArcFull(dc, batteryColor, 8, warningDegree, batteryDegree, direction);
+        }
     }
 
-    hidden function drawArcLevel(dc, level, thresholds, colors, direction, startDegree, endDegree, levelDegree, drawAllColors) {
-
-        var color = colors[0];
-        var size = thresholds.size();
+    hidden function drawArcBorder(dc, color, width, startDegree, endDegree, direction) {
 
         var sign = (direction == dc.ARC_CLOCKWISE ? -1 : 1);
+        var bgColor = App.getApp().getProperty("BackgroundColor");
 
-        // background arc
-        me.drawSideArc(dc, App.getApp().getProperty("ArcBorderColor"), direction, startDegree, endDegree, me.screenWidth / 2 - 4, 8);
-        me.drawSideArc(dc, bgColor, direction, startDegree + 1 * sign, endDegree - 1 * sign, me.screenWidth / 2 - 4, 6);
-
-        if (startDegree == levelDegree) {
-            return;
-        }
-
-        var radius = me.screenWidth / 2 - 4;
-        var penWidth = 8;
-
-        // get the color of the level and draw the level arc
-        for (var i = 0; i < size; i ++) {
-            if (level < thresholds[i]) {
-                break;
-            }
-            color = colors[i];
-        }
-        me.drawSideArc(dc, color, direction, startDegree, levelDegree, radius, penWidth);
-
-        // draw all colors?
-        if (drawAllColors) {
-
-            var degreeStep;
-            var stepStartDegree = startDegree;
-            stepStartDegree = me.degree(stepStartDegree);
-            var stepEndDegree;
-
-            for (var i = 0; i < size - 1; i ++) {
-
-                if (level < thresholds[i + 1]) {
-                    break;
-                }
-
-                degreeStep = sign * Math.floor(((180 - 2 * me.offsetD) * (thresholds[i + 1] - thresholds[i])) / 100);
-
-                stepEndDegree = stepStartDegree + degreeStep;
-                stepEndDegree = me.degree(stepEndDegree);
-
-                me.drawSideArc(dc, colors[i], direction, stepStartDegree, stepEndDegree, radius, penWidth);
-
-                stepStartDegree = stepEndDegree;
-            }
-        }
+        me.drawArcFull(dc, color, width, startDegree, endDegree, direction);
+        me.drawArcFullWithRadius(dc, bgColor, width - 2, width, startDegree + 1 * sign, endDegree - 1 * sign, direction);
     }
 
     hidden function degree(d) {
@@ -254,7 +241,16 @@ class F235SlimWatchFaceView extends Ui.WatchFace {
         return d;
     }
 
-    hidden function drawSideArc(dc, color, direction, startDegree, endDegree, radius, penWidth) {
+    hidden function drawArcFull(dc, color, width, startDegree, endDegree, direction) {
+        me.drawArcFullWithRadius(dc, color, width, width, startDegree, endDegree, direction);
+    }
+
+    hidden function drawArcFullWithRadius(dc, color, penWidth, radiusWidth, startDegree, endDegree, direction) {
+        startDegree = me.degree(startDegree);
+        endDegree = me.degree(endDegree);
+
+        var radius = me.screenWidth / 2 - radiusWidth / 2;
+
         dc.setColor(color, Gfx.COLOR_TRANSPARENT);
         dc.setPenWidth(penWidth);
         dc.drawArc(

@@ -20,5 +20,7 @@
     <string id="HoursColor">HoursColor</string>
     <string id="MinutesColor">MinutesColor</string>
     <string id="DateColor">DateColor</string>
+    <string id="NotificationsColor">NotificationsColor</string>
+    <string id="ConnectedColor">ConnectedColor</string>    
     
 </strings>

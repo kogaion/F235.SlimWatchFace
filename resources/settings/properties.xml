@@ -10,7 +10,7 @@
     <property id="Steps1Color" type="number">0xFFFFFF</property>
     <property id="Steps2Color" type="number">0xFF0000</property>
     <property id="Steps3Color" type="number">0xFF5500</property>
-    <property id="Steps4Color" type="number">0x00AAFF</property>
+    <property id="Steps4Color" type="number">0x0000FF</property>
     <property id="Steps5Color" type="number">0x00FF00</property>
     <property id="ArcBorderColor" type="number">0x555555</property>
     
